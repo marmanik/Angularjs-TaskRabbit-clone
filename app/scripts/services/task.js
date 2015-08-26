@@ -3,7 +3,7 @@
 // app.factory('Task', function(FURL, $firebase, Auth) {
 
 // [AngularFire 1.1.2]
-app.factory('Task', function(FURL, Auth, $firebaseObject, $firebaseArray) {
+app.factory('Task', function(FURL, Auth, $firebaseObject, $firebaseArray, TaskStatus) {
   var ref = new Firebase(FURL);
   // var tasks = $firebase(ref.child('tasks')).$asArray();
 
@@ -85,7 +85,7 @@ app.factory('Task', function(FURL, Auth, $firebaseObject, $firebaseArray) {
 
       // [AngularFire 1.1.2] => use Firebase SDK's update() instead of $update()
       // [Remember to add this status into the Firebase Security Rules for field 'status']
-      t.update({status: "cancelled"}, onComplete);
+      t.update({status: TaskStatus.OPEN}, onComplete);
     },
 
     isCreator: function(task) {
@@ -93,7 +93,7 @@ app.factory('Task', function(FURL, Auth, $firebaseObject, $firebaseArray) {
     },
 
     isOpen: function(task) {
-      return task.status === "open";
+      return task.status === TaskStatus.OPEN;
     },
 
     // --------------------------------------------------//
@@ -108,11 +108,11 @@ app.factory('Task', function(FURL, Auth, $firebaseObject, $firebaseArray) {
       // return t.$update({status: "completed"});
 
       // [AngularFire 1.1.2] => use Firebase SDK's update() instead of $update()
-      t.update({status: "completed"}, onComplete);
+      t.update({status: TaskStatus.COMPLETED}, onComplete);
     },
 
     isCompleted: function(task) {
-      return task.status === "completed";
+      return task.status === TaskStatus.COMPLETED;
     }
   };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('TaskController', function($scope, $location, toaster, Task, Auth) {
+app.controller('TaskController', function($scope, $location, toaster, Task, Auth, TaskStatus) {
 
   $scope.place = null;
   $scope.createTask = function() {
@@ -16,7 +16,7 @@ app.controller('TaskController', function($scope, $location, toaster, Task, Auth
         title: '',
         description: '',
         total: '',
-        status: 'open',
+        status: TaskStatus.OPEN,
         gravatar: '',
         name: '',
         poster: '',

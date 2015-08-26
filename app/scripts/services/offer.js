@@ -3,7 +3,7 @@
 // app.factory('Offer', function(FURL, $firebase, $q, Auth, Task) {
 
 // [AngularFire 1.1.2]
-app.factory('Offer', function(FURL, $q, Auth, Task, $firebaseArray) {
+app.factory('Offer', function(FURL, $q, Auth, Task, $firebaseArray, TaskStatus) {
 
   var ref = new Firebase(FURL);
   var user = Auth.user;
@@ -102,7 +102,7 @@ app.factory('Offer', function(FURL, $q, Auth, Task, $firebaseArray) {
         // return t.$update({status: "assigned", runner: runnerId});
 
         // [AngularFire 1.1.2] => use Firebase SDK's update() instead of $update()
-        t.update({status: "assigned", runner: runnerId}, function() {
+        t.update({status: TaskStatus.ASSIGNED, runner: runnerId}, function() {
 
           // Step 3: Create User-Tasks lookup record for use in Dashboard
           return Task.createUserTasks(taskId, onComplete);

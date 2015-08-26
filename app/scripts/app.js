@@ -14,6 +14,12 @@ var app = angular
     'google.places'
   ])
   .constant('FURL', 'https://taskberry.firebaseio.com')
+  .constant('TaskStatus', {
+    OPEN: 'open',
+    COMPLETED: 'completed',
+    CANCELED: 'cancelled',
+    ASSIGNED: 'assigned'
+  })
   .run(function($rootScope, $location) {
     $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
       // We can catch the error thrown when the $requireAuth promise is rejected
