@@ -147,3 +147,6 @@ a, a:hover, a:focus {
   width: 35px;
   margin-right: 5px;
 }
+.pac-container {
+  z-index: 1051 !important;
+}
