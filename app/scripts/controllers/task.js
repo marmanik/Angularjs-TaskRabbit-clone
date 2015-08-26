@@ -8,6 +8,8 @@ app.controller('TaskController', function($scope, $location, toaster, Task, Auth
     $scope.task.name = Auth.user.profile.name;
     $scope.task.poster = Auth.user.uid;
 
+    $scope.place = null;
+
     Task.createTask($scope.task).then(function(ref) {
       toaster.pop('success', 'Task created successfully.');
       $scope.task = {title: '', description: '', total: '', status: 'open', gravatar: '', name: '', poster: ''};

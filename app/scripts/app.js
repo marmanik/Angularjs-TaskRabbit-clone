@@ -10,7 +10,8 @@ var app = angular
     'ngTouch',
     'firebase',
     'toaster',
-    'angularMoment'
+    'angularMoment',
+    'google.places'
   ])
   .constant('FURL', 'https://taskberry.firebaseio.com')
   .run(function($rootScope, $location) {
