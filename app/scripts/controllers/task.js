@@ -2,11 +2,13 @@
 
 app.controller('TaskController', function($scope, $location, toaster, Task, Auth) {
 
+  $scope.place = null;
   $scope.createTask = function() {
     $scope.task.status = 'open';
     $scope.task.gravatar = Auth.user.profile.gravatar;
     $scope.task.name = Auth.user.profile.name;
     $scope.task.poster = Auth.user.uid;
+    $scope.task.place = $scope.place.name;
 
     Task.createTask($scope.task).then(function(ref) {
       toaster.pop('success', 'Task created successfully.');
@@ -20,6 +22,7 @@ app.controller('TaskController', function($scope, $location, toaster, Task, Auth
         poster: '',
         place: ''
       };
+      $scope.place = null;
       $location.path('/browse/' + ref.key());
     });
   };
