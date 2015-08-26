@@ -10,9 +10,12 @@ app.factory('Task', function(FURL, Auth, $firebaseObject, $firebaseArray) {
   // [AngularFire 1.1.2]
   var tasks = $firebaseArray(ref.child('tasks'));
   var user = Auth.user;
+  var openTaks = $firebaseArray(ref.child('tasks').orderByChild('status').equalTo('open'));
 
   var Task = {
     all: tasks,
+
+    getAllOpen: openTaks,
 
     getTask: function(taskId) {
       // return $firebase(ref.child('tasks').child(taskId));

@@ -3,7 +3,7 @@
 app.controller('BrowseController', function($scope, $routeParams, toaster, Task, Auth, Comment, Offer, $firebaseObject) {
 
   $scope.searchTask = '';
-  $scope.tasks = Task.all;
+  $scope.tasks = Task.getAllOpen;
 
   $scope.user = Auth.user;
   $scope.signedIn = Auth.signedIn;
